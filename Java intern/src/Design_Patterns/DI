@@ -1,0 +1,11 @@
+More decoupled code
+Inject dependency instead of using concrete object
+With DI we depend on abstraction not on concrete implementationЗ
+
+Advantages of DI reduce boilerplate code, more decoupled, high abstraction
+
+                --> Constructor BEST Option, guarantee that all dependency will be there when we create the object
+3 types of DI   --> Setter When dependency is not a must and is optional
+                --> Fields Object may not be created or can be null
+
+Inversion of control transfers the control of the object or portions of program to a framework.

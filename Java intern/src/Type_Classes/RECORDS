@@ -1,0 +1,22 @@
+
+                                RECORDS
+
+                                 --> Конструктор с параметри в същия ред, в който са декларирани полетата.
+Методи, които компилаторът       --> Методи за достъп без префикс
+добавя автоматично при record    --> equals():
+                                 --> hashCode()
+                                 --> toString()
+
+Също като enum, record-ите могат да имплементират обикновени или sealed интерфейси, стига да имплементират всички абстрактни методи
+
+Records are immutable and dont allows to be inherit
+FIELDS are private final by default compiler adds them automatically
+No setters
+
+Long and compact constructors
+
+Compact constructors doesnt have parameters
+Java автоматично присвоява полетата след изпълнение на конструктора
+
+
+

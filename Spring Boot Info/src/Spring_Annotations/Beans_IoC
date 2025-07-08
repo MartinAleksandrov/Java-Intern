@@ -1,0 +1,22 @@
+
+                  --> BeanFactory Най-базовият интерфейс за контейнер.Не се използва директно в Spring Boot.
+spring Containers --> ApplicationContext Надгражда BeanFactory. Поддържа lifecycle callbacks PostConstruct PreDestroy
+                  --> WebApplicationContext Разширение на ApplicationContext за уеб приложения request, session, application
+
+
+                          МЕТОДИ
+ApplicationContext --> @PostConstruct: Изпълнява се веднага след инжектиране на зависимостите
+                   --> @PreDestroy Изпълнява се точно преди Spring да унищожи bean-а освобождаване на ресурси
+
+Методите анотирани с Bean трябва да имат return type
+
+По подразбиране: ВСИЧКИ Spring Bean-ове са singleton
+
+Scope Singleton,prototype,request,session,application
+Можем ръчно да зададем @Scope @Lazy
+
+Всички bean-ове, независимо от типа им
+(singleton, prototype, request и т.н.), се **регистрират в един и същ Spring ApplicationContext
+
+Ако имаме 2 overload-нати методи с анотация bean и искаме
+да достъпим тези методи по bean(name = "") трябва да зададем име а не да използваме default-ното което е името на метода

@@ -1,0 +1,12 @@
+BUILDER is creational pattern
+
+Премества създаването на обекта от неговия собствен в допълнителен клас с postfix Builder, така си спестяваме създаването на огромни
+консруктори ,които съдържат много полета ,които трабва да бъдат инстанцирани.
+
+For every field we have setter method in our builder class similar to the same one in our concrete class.
+And method build that build whole object with the  necessary fields.
+Builder can be inner class
+
+Constructor must be private
+Идеята на този патърн е ,че ни гарантира създаването на обект.
+Създава immutable обект, RECORDS е репрезентация на builder pattern

@@ -1,0 +1,25 @@
+           --> Singleton is creational design  pattern
+
+Singleton  --> Singleton creates ONLY ONE instance of its kind ever
+
+           --> Provides single point of access to it
+
+Constructor must be PRIVATE
+
+That single instance is available with STATIC GET_INSTANCE or creates new instance.
+
+To prevent multiple threads to access getInstance method we wrap creation of singleton instance in a synchronized block
+
+The instance of singleton must be volatile, with that we ensure that program read that variable directly from the memory
+
+
+
+              --> Създава се само една инстанция, която се споделя, без излишно копиране
+  Advantages  --> Всички обекти работят с една и съща инстанция, данните са синхронизирани.
+              --> Spring управлява кога и как се създават и унищожават инстанциите.
+
+
+                                                DESIGN PATTERNS
+    Design patterns са добре установени и многократно използвани решения на често срещани проблеми в софтуерния дизайн.
+    Те предоставят готови шаблони или подходи, които улесняват писането на поддържам, гъвкав и ефективен код.
+    С тях разработчиците могат по-лесно да комуникират и споделят добри практики.

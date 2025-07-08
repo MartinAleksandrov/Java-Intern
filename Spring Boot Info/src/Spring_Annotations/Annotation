@@ -1,0 +1,36 @@
+Beans are classes managed by Spring Container
+
+@Component     --> Makes java class Spring Bean
+@Service       --> Beans that contains business logic
+@Repository    --> Beans that managed data
+@Controller    --> Controls HTTP request and response
+@Autowired     --> Automatically inject dependency for us
+@Value         --> Inject fixed value to our field
+@Configuration --> Classes that contains code for configuring Spring
+@ComponentScan --> Scan code for classes that are beans
+@Beans         --> Added to methods,to make return type of that method Spring Bean
+@Transactional --> Makes block of code one unit and if something went wrong all process are ROLLBACK
+@RequestMapping--> Maps certain HTTP request to given class
+@RestController--> Handles HTTP response and returns data in JSON format
+
+@SpringBootApplication --> Makes simple app into SpringBoot app, Added to Main Class,
+contains 3 annotation @EnableAutoConfiguration,@Configuration,@ComponentScan
+
+LifeCycle of Spring Bean --> Spring scan the code and find spring bean then create instance of that bean inject
+dependency if there are,(Can implements interfaces) Bean is ready to use, after our app is shutdown beans is destroyed
+
+Използваш @ComponentScan с параметри за други пакети:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
