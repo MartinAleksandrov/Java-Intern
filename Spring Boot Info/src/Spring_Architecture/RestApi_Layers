@@ -1,0 +1,37 @@
+
+                        --> Controllers → приема HTTP заявки и връща отговори
+                        --> Service     → бизнес логика, валидации
+        REST API LAYERS --> Repository  → достъп до база данни чрез JPA
+                        --> Domain      → POJO класове (Entity, DTO, Model)
+                        --> Config      → конфигурации, security, beans
+
+
+
+Controller Layer — API интерфейсът
+
+Приема и обработва HTTP заявки
+Десериализира JSON → Java обекти
+
+
+Service Layer — бизнес логика
+
+Обработва входа от контролера
+Извършва бизнес правила (напр. "провери дали потребителят вече съществува")
+Работи с DTO и Entity
+
+                            JACKSON
+From Json to POJO Json is converted to POJO via Jackson --> Calls setter methods
+From POJO to Json POJO is converted to Json via Jackson --> Calls getter methods
+
+
+
+
+
+
+
+
+
+
+
+
+
