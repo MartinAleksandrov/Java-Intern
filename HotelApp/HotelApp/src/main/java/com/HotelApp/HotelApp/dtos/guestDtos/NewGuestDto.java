@@ -1,0 +1,71 @@
+package com.HotelApp.HotelApp.dtos.guestDtos;
+
+import com.HotelApp.HotelApp.enums.Gender;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Range;
+
+public class NewGuestDto {
+
+    @NotBlank(message = "First name is required")
+    @Size(min = 3, max = 30 , message = "First name must be at most 30 characters" )
+    private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 30, message = "Last name must be at most 30 characters")
+    private String lastName;
+
+    @NotNull(message = "Age is required")
+    @Range(min = 0, max = 111)
+    private Short age;
+
+    @NotNull(message = "Gender is required")
+    private Gender gender;
+
+    @NotBlank(message = "Phone is required")
+    @Size(min = 3, max = 30 , message = "Phone number must be between 10 and 13 characters" )
+    @NotBlank()
+    private String phone;
+
+
+    //GET - SET METHODS
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Short getAge() {
+        return age;
+    }
+
+    public void setAge(Short age) {
+        this.age = age;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+}
