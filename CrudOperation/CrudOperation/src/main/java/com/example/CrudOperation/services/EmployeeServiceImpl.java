@@ -1,5 +1,6 @@
 package com.example.CrudOperation.services;
 
+import com.example.CrudOperation.Repositories.EmployeeRepository;
 import com.example.CrudOperation.dao.EmployeeDAOJPAImpl;
 import com.example.CrudOperation.entity.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,52 +11,51 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDAOJPAImpl daojpa;
+    private final EmployeeRepository repository;
     private final ObjectMapper mapper;
 
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeDAOJPAImpl daojpa, ObjectMapper mapper) {
-        this.daojpa = daojpa;
+    public EmployeeServiceImpl(EmployeeRepository repository, ObjectMapper mapper) {
+        this.repository = repository;
         this.mapper = mapper;
     }
 
     @Override
     public List<Employee> findAll() {
-        return daojpa.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Employee findById(int id) {
-        var employee = daojpa.findById(id);
+        var employee = repository.findById(id);
 
-        if(employee == null){
+        if(!employee.isPresent()){
             throw new RuntimeException("Employee not found");
         }
-        return daojpa.findById(id);
+        return employee.get();
     }
 
     @Override
-    @Transactional
     public Employee save(Employee employee) {
         if (employee.getId() == 0) {
             employee.setId(0);
         }
-        return daojpa.save(employee);
+        return repository.save(employee);
     }
 
     @Override
-    @Transactional
     public void delete(int id) {
-        Employee employee = daojpa.findById(id);
-        if(employee == null){
+        var employee = repository.findById(id);
+        if(!employee.isPresent()){
             throw new RuntimeException("Employee not found");
         }
-        daojpa.delete(id);
+        repository.delete(employee.get());
     }
 
     @Override
