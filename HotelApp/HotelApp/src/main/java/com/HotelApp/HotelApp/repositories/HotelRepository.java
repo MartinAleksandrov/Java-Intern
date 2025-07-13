@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, UUID> {
     void deleteByName(String name);
-   // HotelGuestDto findGuestByName(String guestName);
+    Boolean existsByName(String name);
 }

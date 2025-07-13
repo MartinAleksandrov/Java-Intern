@@ -1,5 +1,6 @@
 package com.HotelApp.HotelApp.services.implementetion;
 
+import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
 import com.HotelApp.HotelApp.entities.Hotel;
 import com.HotelApp.HotelApp.mappers.HotelMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
@@ -22,8 +23,10 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Boolean addHotel(Hotel hotel) {
-        return true;
+    public HotelDto addHotel(HotelDto hotelDto) {
+        Hotel entity = hotelMapper.toEntity(hotelDto);
+        var saved = hotelRepository.save(entity);
+        return hotelMapper.toDto(saved);
     }
 
     @Override
