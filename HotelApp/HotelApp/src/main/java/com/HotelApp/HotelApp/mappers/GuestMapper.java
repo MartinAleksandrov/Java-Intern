@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface GuestMapper {
 
-    //Изрично упоменаване кои полета да се мапнат едни с други, поради грешка с мапъра
+    //Изрично упоменаване кои полета да се мапнат едни с други, поради грешка в мапъра
     @Mapping(target = "gender", source = "gender")
     NewGuestDto toDto(Guest guest);
 

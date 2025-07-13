@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UniquePhoneNumber implements ConstraintValidator<UniquePhone,String> {
+public class UniquePhoneNumberValidator implements ConstraintValidator<UniquePhone,String> {
 
     private final GuestRepository guestRepository;
 
     @Autowired
-    public UniquePhoneNumber(final GuestRepository guestRepository) {
+    public UniquePhoneNumberValidator(final GuestRepository guestRepository) {
         this.guestRepository = guestRepository;
     }
 
@@ -28,6 +28,6 @@ public class UniquePhoneNumber implements ConstraintValidator<UniquePhone,String
             return false;
         }
 
-        return !guestRepository.existByPhone(phoneNumber);
+        return !guestRepository.phoneExists(phoneNumber);
     }
 }

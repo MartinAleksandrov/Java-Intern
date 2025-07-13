@@ -24,14 +24,8 @@ public class GuestServiceImpl implements GuestService {
     public NewGuestDto createGuest(NewGuestDto guestDto) {
 
         Guest guest = guestMapper.toEntity(guestDto);
+        var newGuest = guestRepository.save(guest);
+        return guestMapper.toDto(newGuest);
 
-        try {
-            guestRepository.save(guest);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return guestDto;
     }
 }
