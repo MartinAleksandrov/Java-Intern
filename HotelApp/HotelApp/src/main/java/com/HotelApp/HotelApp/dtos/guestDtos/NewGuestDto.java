@@ -1,5 +1,6 @@
 package com.HotelApp.HotelApp.dtos.guestDtos;
 
+import com.HotelApp.HotelApp.customAnnotation.UniquePhone;
 import com.HotelApp.HotelApp.enums.Gender;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Range;
@@ -21,9 +22,8 @@ public class NewGuestDto {
     @NotNull(message = "Gender is required")
     private Gender gender;
 
-    @NotBlank(message = "Phone is required")
-    @Size(min = 3, max = 30 , message = "Phone number must be between 10 and 13 characters" )
-    @NotBlank()
+    //Custom annotation that combine all these annotations(NotBlank,Size,Min,Max) and check regex.
+    @UniquePhone
     private String phone;
 
 

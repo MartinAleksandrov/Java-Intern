@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface GuestRepository extends JpaRepository<Guest, UUID> {
+
+    Boolean existByPhone(String phone);
 }
