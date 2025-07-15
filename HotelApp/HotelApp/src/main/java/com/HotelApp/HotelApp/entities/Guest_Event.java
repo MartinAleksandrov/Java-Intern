@@ -22,6 +22,7 @@ public class Guest_Event {
     private Event event;
 
 
+    /////////////////////
     public Guest_Event() {}
 
     public Guest_Event(Guest guest, Event event) {
@@ -31,6 +32,8 @@ public class Guest_Event {
     }
 
 
+
+    /////////////////////
     //GET & SET Method
     public GuestEventId getGuestEventId() {
         return guestEventId;
