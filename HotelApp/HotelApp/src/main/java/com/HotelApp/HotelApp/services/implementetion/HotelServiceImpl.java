@@ -22,6 +22,7 @@ public class HotelServiceImpl implements HotelService {
         this.hotelMapper = hotelMapper;
     }
 
+
     @Override
     public HotelDto addHotel(HotelDto hotelDto) {
         Hotel entity = hotelMapper.toEntity(hotelDto);

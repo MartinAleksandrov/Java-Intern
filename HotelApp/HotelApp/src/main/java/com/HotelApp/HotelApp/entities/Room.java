@@ -92,4 +92,17 @@ public class Room {
         public Hotel getHotel() {
             return hotel;
         }
+
+        public void setHotel(Hotel hotel) {
+            this.hotel = hotel;
+        }
+
+        public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+        public void setBooked(Boolean booked) {
+        isBooked = booked;
+    }
+
 }

@@ -1,7 +1,31 @@
 package com.HotelApp.HotelApp.controllers;
 
+import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.services.contracts.RoomService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/room")
 public class RoomController {
+
+    private final RoomService roomService;
+
+    @Autowired
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
+    }
+
+    @PostMapping("/createRoom")
+    public ResponseEntity<NewRoomDto> createRoom(@Valid @RequestBody NewRoomDto roomDto) {
+        var room = roomService.createRoom(roomDto);
+
+        return new ResponseEntity<>(roomDto, HttpStatus.CREATED);
+    }
 }
