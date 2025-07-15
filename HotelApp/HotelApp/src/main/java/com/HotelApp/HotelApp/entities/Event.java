@@ -14,7 +14,7 @@ import java.util.Date;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -33,13 +33,16 @@ public class Event {
 
     public Event(){}
 
+
+
+
     //GET & SET Methods
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
