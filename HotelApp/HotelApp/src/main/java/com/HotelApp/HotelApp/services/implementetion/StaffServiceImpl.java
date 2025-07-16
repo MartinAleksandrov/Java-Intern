@@ -1,5 +1,6 @@
 package com.HotelApp.HotelApp.services.implementetion;
 
+import com.HotelApp.HotelApp.dtos.staffDtos.AllHotelStaffDto;
 import com.HotelApp.HotelApp.dtos.staffDtos.NewStaffDto;
 import com.HotelApp.HotelApp.mappers.StaffMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
@@ -7,6 +8,8 @@ import com.HotelApp.HotelApp.repositories.StaffRepository;
 import com.HotelApp.HotelApp.services.contracts.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 public class StaffServiceImpl implements StaffService {
@@ -46,6 +49,7 @@ public class StaffServiceImpl implements StaffService {
         newStaff.setHotel(hotel);
         staffRepository.save(newStaff);
         return staffMapper.toDto(newStaff);
-
     }
+
+
 }

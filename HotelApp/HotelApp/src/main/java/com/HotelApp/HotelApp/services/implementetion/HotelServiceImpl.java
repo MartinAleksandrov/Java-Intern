@@ -2,6 +2,7 @@ package com.HotelApp.HotelApp.services.implementetion;
 
 import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
+import com.HotelApp.HotelApp.dtos.staffDtos.AllHotelStaffDto;
 import com.HotelApp.HotelApp.entities.Hotel;
 import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.HotelMapper;
@@ -47,6 +48,17 @@ public class HotelServiceImpl implements HotelService {
           return hotelMapper.toDtoSet(hotel.getRooms());
         }
          throw new RuntimeException("Hotel not found");
+
+    }
+    @Override
+    public Set<AllHotelStaffDto> getAllStaff(String hotelName) {
+        var hotel = hotelRepository.findHotelByName(hotelName);
+
+        if (hotel == null) {
+            throw new RuntimeException("Hotel not found");
+        }
+
+        return hotelMapper.toStaffDtoSet(hotel.getStaffs());
 
     }
 
