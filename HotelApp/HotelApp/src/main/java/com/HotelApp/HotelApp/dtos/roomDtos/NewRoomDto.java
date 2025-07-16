@@ -1,18 +1,18 @@
 package com.HotelApp.HotelApp.dtos.roomDtos;
 
-
-import jakarta.validation.constraints.*;
+import com.HotelApp.HotelApp.customAnnotation.UniqueRoom;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.UniqueElements;
-
 import java.math.BigDecimal;
-import java.util.UUID;
-
 
 public class NewRoomDto {
 
     @NotBlank(message = "Name is required and must be max 50 symbols!")
     @Size(max = 50)
+    @UniqueRoom//Custom annotation to check if room name is already in use
     private String name;
 
     @NotNull(message = "Size is required")
@@ -26,7 +26,6 @@ public class NewRoomDto {
 
     private Boolean isBooked;
 
-    @NotBlank
     private String hotelName;
 
 

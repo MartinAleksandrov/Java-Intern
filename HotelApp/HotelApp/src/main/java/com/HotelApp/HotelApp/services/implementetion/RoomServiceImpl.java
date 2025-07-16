@@ -1,12 +1,10 @@
 package com.HotelApp.HotelApp.services.implementetion;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
-import com.HotelApp.HotelApp.entities.Hotel;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.repositories.RoomRepository;
 import com.HotelApp.HotelApp.services.contracts.RoomService;
-import org.hibernate.validator.constraints.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,15 +27,16 @@ public class RoomServiceImpl implements RoomService {
     public NewRoomDto createRoom(NewRoomDto newRoomDto) {
 
         var hotel = hotelRepository.findHotelByName(newRoomDto.getHotelName());
-        var exists = roomRepository.existsByName(newRoomDto.getName());
 
-        if (hotel != null && !exists) {
+        if (hotel != null) {
             var newRoom = roomMapper.toEntity(newRoomDto);
             newRoom.setHotel(hotel);
+            roomRepository.save(newRoom);
+            hotel.addRoomToHotel(newRoom);
             return roomMapper.toDto(roomRepository.save(newRoom));
 
         }
 
-        throw new RuntimeException("Hotel not found or room already exists");
+        throw new RuntimeException("Hotel not found");
     }
 }

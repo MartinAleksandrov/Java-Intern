@@ -98,4 +98,70 @@ public class Hotel {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        if(this.rooms != null && !this.rooms.isEmpty()) {
+          this.rooms.addAll(rooms);
+        }
+        else {
+            this.rooms = new HashSet<>();
+        }
+    }
+
+    public Set<Guest> getGuests() {
+        return guests;
+    }
+
+    public void setGuests(Set<Guest> guests) {
+        if(this.guests != null && !this.guests.isEmpty()) {
+            this.guests.addAll(guests);
+        }
+        else {
+            this.guests = new HashSet<>();
+        }
+    }
+
+    public Set<Staff> getStaffs() {
+        return staffs;
+    }
+
+    public void setStaffs(Set<Staff> staffs) {
+        if(this.staffs != null && !this.staffs.isEmpty()) {
+            this.staffs.addAll(staffs);
+        }
+        else {
+            this.staffs = new HashSet<>();
+        }
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        if(this.bookings != null && !this.bookings.isEmpty()) {
+            this.bookings.addAll(bookings);
+        }
+        else {
+            this.bookings = new HashSet<>();
+        }
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void addRoomToHotel(Room room)
+    {
+        this.rooms.add(room);
+    }
 }

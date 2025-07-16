@@ -2,16 +2,9 @@ package com.HotelApp.HotelApp.entities;
 
 import com.HotelApp.HotelApp.enums.Gender;
 import com.HotelApp.HotelApp.enums.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import java.util.UUID;
+import jakarta.persistence.*;
 
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import java.util.UUID;
 
 @Entity
 public class Staff {
@@ -37,7 +30,8 @@ public class Staff {
     @Column(name = "role")
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                          CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 

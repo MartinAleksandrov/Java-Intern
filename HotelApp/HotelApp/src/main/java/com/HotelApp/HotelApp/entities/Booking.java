@@ -1,14 +1,8 @@
 package com.HotelApp.HotelApp.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
+
 import java.util.UUID;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 import java.util.Date;
 
 @Entity
@@ -25,15 +19,18 @@ public class Booking {
     @Column(name = "check_out")
     private Date checkOut;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                         CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                         CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "guest_id")
     private Guest guest;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                          CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 

@@ -1,16 +1,9 @@
 package com.HotelApp.HotelApp.entities;
 
 import com.HotelApp.HotelApp.enums.Gender;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
+
 import java.util.UUID;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "Guest")
@@ -37,7 +30,8 @@ public class Guest {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                          CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
