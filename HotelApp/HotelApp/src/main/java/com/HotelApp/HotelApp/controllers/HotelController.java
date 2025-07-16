@@ -1,5 +1,6 @@
 package com.HotelApp.HotelApp.controllers;
 
+import com.HotelApp.HotelApp.dtos.guestDtos.AllHotelGuestDto;
 import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
 import com.HotelApp.HotelApp.dtos.staffDtos.AllHotelStaffDto;
@@ -43,5 +44,11 @@ public class HotelController {
     public ResponseEntity<Set<AllHotelStaffDto>> getAllHotelStaff(@PathVariable String hotelName) {
 
         return new ResponseEntity<>(hotelService.getAllStaff(hotelName),HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getAllHotelGuest/{hotelName}")
+    public ResponseEntity<Set<AllHotelGuestDto>> getAllHotelGuest(@PathVariable String hotelName) {
+
+        return new ResponseEntity<>(hotelService.getAllGuest(hotelName),HttpStatus.CREATED);
     }
 }
