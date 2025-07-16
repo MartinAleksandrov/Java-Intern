@@ -12,7 +12,7 @@ public class NewRoomDto {
 
     @NotBlank(message = "Name is required and must be max 50 symbols!")
     @Size(max = 50)
-    @UniqueRoom//Custom annotation to check if room name is already in use
+    //@UniqueRoom//Custom annotation to check if room name is already in use
     private String name;
 
     @NotNull(message = "Size is required")

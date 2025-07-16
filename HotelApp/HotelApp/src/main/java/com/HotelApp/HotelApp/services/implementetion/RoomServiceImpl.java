@@ -27,16 +27,19 @@ public class RoomServiceImpl implements RoomService {
     public NewRoomDto createRoom(NewRoomDto newRoomDto) {
 
         var hotel = hotelRepository.findHotelByName(newRoomDto.getHotelName());
-
-        if (hotel != null) {
-            var newRoom = roomMapper.toEntity(newRoomDto);
-            newRoom.setHotel(hotel);
-            roomRepository.save(newRoom);
-            hotel.addRoomToHotel(newRoom);
-            return roomMapper.toDto(roomRepository.save(newRoom));
-
+        if (hotel == null) {
+            throw new RuntimeException("Hotel not found");
         }
 
-        throw new RuntimeException("Hotel not found");
+        if (hotel.getRooms().stream()
+                .anyMatch(room -> room.getName().equalsIgnoreCase(newRoomDto.getName()))) {
+            throw new RuntimeException("Hotel already contains this room");
+        }
+
+        var newRoom = roomMapper.toEntity(newRoomDto);
+        newRoom.setHotel(hotel);
+        hotel.addRoomToHotel(newRoom);
+
+        return roomMapper.toDto(roomRepository.save(newRoom));
     }
 }
