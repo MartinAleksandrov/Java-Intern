@@ -8,6 +8,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
+
+import java.math.BigDecimal;
 import java.util.UUID;
 
 
@@ -30,7 +32,7 @@ public class Room {
         private Integer floor;
 
         @Column(name = "price")
-        private Double price;
+        private BigDecimal price;
 
         @Column(name = "is_booked")
         private Boolean isBooked;
@@ -44,7 +46,7 @@ public class Room {
         //Constructors
         public Room() {}
 
-        public Room(String name, Double size, Integer floor, Double price, Boolean isBooked, Hotel hotel) {
+        public Room(String name, Double size, Integer floor, BigDecimal price, Boolean isBooked, Hotel hotel) {
             this.name = name;
             this.size = size;
             this.floor = floor;
@@ -84,11 +86,11 @@ public class Room {
             return floor;
         }
 
-        public Double getPrice() {
+        public BigDecimal getPrice() {
             return price;
         }
 
-        public void setPrice(Double price) {
+        public void setPrice(BigDecimal price) {
             this.price = price;
         }
 

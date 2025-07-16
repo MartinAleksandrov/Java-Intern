@@ -38,7 +38,6 @@ public class RoomServiceImpl implements RoomService {
 
         var newRoom = roomMapper.toEntity(newRoomDto);
         newRoom.setHotel(hotel);
-        hotel.addRoomToHotel(newRoom);
         roomRepository.save(newRoom);
         return roomMapper.toDto(newRoom);
     }

@@ -75,11 +75,11 @@ public class NewRoomDto {
         this.price = price;
     }
 
-    public Boolean getBooked() {
+    public Boolean getIsBooked() {
         return isBooked;
     }
 
-    public void setBooked(Boolean booked) {
+    public void setIsBooked(Boolean booked) {
         isBooked = booked;
     }
 

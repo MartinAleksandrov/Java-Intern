@@ -165,5 +165,19 @@ public class Hotel {
         this.rooms.add(room);
     }
 
+    public void addStaffToHotel(Staff staff)
+    {
+        this.staffs.add(staff);
+    }
+
+    public void addBookingToHotel(Booking booking)
+    {
+        this.bookings.add(booking);
+    }
+
+    public void addGuestToHotel(Guest guest)
+    {
+        this.guests.add(guest);
+    }
 
 }

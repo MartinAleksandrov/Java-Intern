@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.controllers;
 
 import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
 import com.HotelApp.HotelApp.services.contracts.HotelService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -28,5 +30,11 @@ public class HotelController {
         var created = hotelService.addHotel(dto);
 
         return new ResponseEntity<>(created,HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getAllHotelRooms/{hotelName}")
+    public ResponseEntity<Set<AllRoomsDto>> getAllHotelRooms(@PathVariable String hotelName) {
+
+        return new ResponseEntity<>(hotelService.getAllRooms(hotelName),HttpStatus.CREATED);
     }
 }

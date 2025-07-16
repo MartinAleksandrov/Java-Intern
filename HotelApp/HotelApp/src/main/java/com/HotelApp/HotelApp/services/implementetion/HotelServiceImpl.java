@@ -1,12 +1,16 @@
 package com.HotelApp.HotelApp.services.implementetion;
 
 import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
 import com.HotelApp.HotelApp.entities.Hotel;
+import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.HotelMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.services.contracts.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -34,11 +38,20 @@ public class HotelServiceImpl implements HotelService {
         return true;
     }
 
-//    @Override
-//    public HotelGuestDto getGuestById(UUID id) {
-//        return hotelRepository
-//                .findById(id)
-//                .map(hotelMapper::toDto)
-//                .orElseThrow();
-//    }
+    @Override
+    public Set<AllRoomsDto> getAllRooms(String hotelName) {
+
+        var hotel = hotelExistByName(hotelName);
+
+        if (hotel != null) {
+          return hotelMapper.toDtoSet(hotel.getRooms());
+        }
+         throw new RuntimeException("Hotel not found");
+
+    }
+
+    @Override
+    public Hotel hotelExistByName(String hotelName) {
+        return hotelRepository.findHotelByName(hotelName);
+    }
 }

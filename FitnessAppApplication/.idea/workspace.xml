@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24e0be3a-762f-4343-a4c4-7027cdda937e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/customAnnotation/Required.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/dtos/hotelDtos/HotelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/customAnnotation/UniqueName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/dtos/roomDtos/AllRoomsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/validators/UniqueNameValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/controllers/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/controllers/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/controllers/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/controllers/StaffController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/dtos/staffDtos/NewStaffDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/dtos/staffDtos/NewStaffDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/entities/Staff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/HotelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/HotelMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/RoomMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/RoomMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/StaffMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/mappers/StaffMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/repositories/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/repositories/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/repositories/StaffRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/repositories/StaffRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/contracts/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/contracts/HotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/implementetion/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/implementetion/HotelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/implementetion/StaffServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/java/com/HotelApp/HotelApp/services/implementetion/StaffServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,37 +28,37 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MartinAleksandrov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MartinAleksandrov&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MartinAleksandrov/Java-Intern.git",
-    "accountId": "00c66f5b-a933-453d-a65d-1f9c5e43b9ad"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MartinAleksandrov/Java-Intern.git&quot;,
+    &quot;accountId&quot;: &quot;00c66f5b-a933-453d-a65d-1f9c5e43b9ad&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2zo7h78aUmkQIWTm8cgMirtJmAP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/35988/Desktop/Java Projects/Java-Intern/FitnessAppApplication",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/35988/Desktop/Java Projects/Java-Intern/FitnessAppApplication&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -65,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752385687496</updated>
       <workItem from="1752385688607" duration="12000" />
+      <workItem from="1752670107158" duration="16000" />
     </task>
     <servers />
   </component>
