@@ -14,6 +14,7 @@ import com.HotelApp.HotelApp.services.contracts.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Array;
 import java.util.UUID;
 
 @Service
@@ -44,6 +45,7 @@ public class BookingServiceImpl implements BookingService {
         Guest guest = guestRepository.findGuestsByFirstNameAndLastName(dto.getGuestFirstName(), dto.getGuestLastName());
 
         if (isBookingValid(hotel, room, guest, dto)) {
+
             Booking booking = bookingMapper.toEntity(dto);
             booking.setHotel(hotel);
             guest.setHotel(hotel);
