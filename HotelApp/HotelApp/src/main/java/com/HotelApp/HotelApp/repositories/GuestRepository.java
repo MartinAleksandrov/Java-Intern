@@ -13,4 +13,7 @@ public interface GuestRepository extends JpaRepository<Guest, UUID> {
 
     @Query("SELECT COUNT(g) > 0 FROM Guest g WHERE g.phone = :phone")
     Boolean phoneExists(@Param("phone") String phone);
+
+    Guest findGuestsByFirstNameAndLastName(String firstName, String lastName);
+
 }

@@ -76,6 +76,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public Hotel hotelExistByName(String hotelName) {
+
         return hotelRepository.findHotelByName(hotelName);
     }
 }

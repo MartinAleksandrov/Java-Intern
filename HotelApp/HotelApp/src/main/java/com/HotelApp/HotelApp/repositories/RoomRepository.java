@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface RoomRepository extends JpaRepository<Room, UUID> {
 
     Boolean existsByName(String name);
+    Room findRoomByName(String name);
 }

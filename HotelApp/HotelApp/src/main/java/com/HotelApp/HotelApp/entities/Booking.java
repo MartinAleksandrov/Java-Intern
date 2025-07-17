@@ -82,6 +82,18 @@ public class Booking {
         return hotel;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
     public UUID getId() {
         return id;
     }
