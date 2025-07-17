@@ -37,39 +37,34 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public NewBookingDto addBooking(NewBookingDto newBookingDto) {
+    public NewBookingDto addBooking(NewBookingDto dto) {
 
-        String roomName = newBookingDto.getRoomName();
+        Hotel hotel = hotelRepository.findHotelByName(dto.getHotelName());
+        Room room = roomRepository.findRoomByName(dto.getRoomName());
+        Guest guest = guestRepository.findGuestsByFirstNameAndLastName(dto.getGuestFirstName(), dto.getGuestLastName());
 
-        Hotel hotel = hotelRepository.findHotelByName(newBookingDto.getHotelName());
-        Room room = roomRepository.findRoomByName(roomName);
+        if (isBookingValid(hotel, room, guest, dto)) {
+            Booking booking = bookingMapper.toEntity(dto);
+            booking.setHotel(hotel);
+            booking.setRoom(room);
+            booking.setGuest(guest);
 
-        String guestFirstName = newBookingDto.getGuestFirstName();
-        String guestLastName = newBookingDto.getGuestLastName();
+            room.setIsBooked(true);
+            bookingRepository.save(booking);
 
-        Guest guest = guestRepository.
-                findGuestsByFirstNameAndLastName(guestFirstName, guestLastName);
-
-
-        if (hotel != null &&//Ако хотела съществува
-                doesHotelContainsRoom(hotel, roomName) &&//Ако хотела съдържа конкретната стая
-                !room.getIsBooked() &&//Ако стаята още не е запазена
-                guest != null && // Ако госта съществува
-                !doesGuestHaveBooking(hotel, guest.getId())//Ако госта не е запазил друга стая
-                ) //Създаваме резервация за госта в посочения хотел в конкретна стая
-        {
-        Booking booking = bookingMapper.toEntity(newBookingDto);
-
-        booking.setGuest(guest);
-        booking.setRoom(room);
-        booking.setHotel(hotel);
-        room.setIsBooked(true);
-
-        bookingRepository.save(booking);
-        return bookingMapper.toDto(booking);
-
+            return bookingMapper.toDto(booking);
         }
-        throw new RuntimeException("Something went wrong");
+
+        throw new RuntimeException("Invalid booking request");
+    }
+
+    private boolean isBookingValid(Hotel hotel, Room room, Guest guest, NewBookingDto dto) {
+        return hotel != null
+                && room != null
+                && guest != null
+                && !room.getIsBooked()
+                && doesHotelContainsRoom(hotel, dto.getRoomName())
+                && !doesGuestHaveBooking(hotel, guest.getId());
     }
 
     private boolean doesHotelContainsRoom(Hotel hotel, String roomName) {
