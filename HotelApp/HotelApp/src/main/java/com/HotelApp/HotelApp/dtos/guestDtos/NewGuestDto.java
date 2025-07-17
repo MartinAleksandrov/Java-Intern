@@ -2,7 +2,9 @@ package com.HotelApp.HotelApp.dtos.guestDtos;
 
 import com.HotelApp.HotelApp.customAnnotation.UniquePhone;
 import com.HotelApp.HotelApp.enums.Gender;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 
 public class NewGuestDto {

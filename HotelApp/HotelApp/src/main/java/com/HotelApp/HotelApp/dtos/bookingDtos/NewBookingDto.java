@@ -1,22 +1,97 @@
 package com.HotelApp.HotelApp.dtos.bookingDtos;
 
-import com.HotelApp.HotelApp.entities.Guest;
-import com.HotelApp.HotelApp.entities.Hotel;
-import com.HotelApp.HotelApp.entities.Room;
-import jakarta.persistence.Column;
+import com.HotelApp.HotelApp.customAnnotation.ValidData;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
+@ValidData
 public class NewBookingDto {
 
-    @Column(name = "check_in")
+    @FutureOrPresent
+    @NotNull
     private Date checkIn;
 
+    @FutureOrPresent
+    @NotNull
     private Date checkOut;
 
-    private Room room;
+    @NotBlank(message = "Room name is required")
+    private String roomName;
 
-    private Guest guest;
+    @NotBlank(message = "Guest name is required")
+    private String guestFirstName;
 
-    private Hotel hotel;
+    @NotBlank(message = "Guest name is required")
+    private String guestLastName;
+
+
+    @NotBlank(message = "Hotel name is required")
+    private String hotelName;
+
+
+    public NewBookingDto() {}
+
+    public NewBookingDto(Date checkIn, String hotelName, String guestLastName, String guestFirstName, String roomName, Date checkOut) {
+        this.checkIn = checkIn;
+        this.hotelName = hotelName;
+        this.guestLastName = guestLastName;
+        this.guestFirstName = guestFirstName;
+        this.roomName = roomName;
+        this.checkOut = checkOut;
+    }
+
+    //GET & SET Methods
+
+
+    public String getGuestFirstName() {
+        return guestFirstName;
+    }
+
+    public void setGuestFirstName(String guestFirstName) {
+        this.guestFirstName = guestFirstName;
+    }
+
+    public String getGuestLastName() {
+        return guestLastName;
+    }
+
+    public void setGuestLastName(String guestLastName) {
+        this.guestLastName = guestLastName;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public Date getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(Date checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public Date getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
+    }
 }
