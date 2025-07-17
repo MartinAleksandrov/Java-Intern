@@ -2,6 +2,7 @@ package com.HotelApp.HotelApp.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 import java.util.Date;
 
@@ -14,10 +15,10 @@ public class Booking {
     private UUID id;
 
     @Column(name = "check_in")
-    private Date checkIn;
+    private LocalDate checkIn;
 
     @Column(name = "check_out")
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
                          CascadeType.REFRESH, CascadeType.PERSIST})
@@ -39,7 +40,7 @@ public class Booking {
     //Constructors
     public Booking() {}
 
-    public Booking(Date checkIn, Date checkOut, Room room, Guest guest, Hotel hotel) {
+    public Booking(LocalDate checkIn, LocalDate checkOut, Room room, Guest guest, Hotel hotel) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.room = room;
@@ -50,15 +51,19 @@ public class Booking {
 
 
     //Get - Set
-    public Date getCheckIn() {
+    public LocalDate getCheckIn() {
         return checkIn;
     }
 
-    public Date getCheckOut() {
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
     }
 
@@ -82,14 +87,6 @@ public class Booking {
         return hotel;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
-    }
-
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
@@ -97,4 +94,9 @@ public class Booking {
     public UUID getId() {
         return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
 }

@@ -46,6 +46,7 @@ public class BookingServiceImpl implements BookingService {
         if (isBookingValid(hotel, room, guest, dto)) {
             Booking booking = bookingMapper.toEntity(dto);
             booking.setHotel(hotel);
+            guest.setHotel(hotel);
             booking.setRoom(room);
             booking.setGuest(guest);
 

@@ -1,22 +1,26 @@
 package com.HotelApp.HotelApp.dtos.bookingDtos;
 
 import com.HotelApp.HotelApp.customAnnotation.ValidData;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @ValidData
 public class NewBookingDto {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @FutureOrPresent
     @NotNull
-    private Date checkIn;
+    private LocalDate checkIn;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @FutureOrPresent
     @NotNull
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @NotBlank(message = "Room name is required")
     private String roomName;
@@ -34,7 +38,7 @@ public class NewBookingDto {
 
     public NewBookingDto() {}
 
-    public NewBookingDto(Date checkIn, String hotelName, String guestLastName, String guestFirstName, String roomName, Date checkOut) {
+    public NewBookingDto(LocalDate checkIn, String hotelName, String guestLastName, String guestFirstName, String roomName, LocalDate checkOut) {
         this.checkIn = checkIn;
         this.hotelName = hotelName;
         this.guestLastName = guestLastName;
@@ -79,19 +83,19 @@ public class NewBookingDto {
         this.roomName = roomName;
     }
 
-    public Date getCheckOut() {
+    public LocalDate getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
     }
 
-    public Date getCheckIn() {
+    public LocalDate getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Date checkIn) {
+    public void setCheckIn(LocalDate checkIn) {
         this.checkIn = checkIn;
     }
 }
