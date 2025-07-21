@@ -35,16 +35,16 @@ public class Hotel {
     @Column(name = "stars")
     private Short stars;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL , orphanRemoval = true)
     private Set<Room> rooms;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Guest> guests;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Booking> bookings;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Staff> staffs;
 
 
@@ -100,7 +100,6 @@ public class Hotel {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Set<Room> getRooms() {
         return rooms;
