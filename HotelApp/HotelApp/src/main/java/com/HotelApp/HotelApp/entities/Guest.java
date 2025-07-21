@@ -3,6 +3,7 @@ package com.HotelApp.HotelApp.entities;
 import com.HotelApp.HotelApp.enums.Gender;
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -104,4 +105,15 @@ public class Guest {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Guest guest = (Guest) o;
+        return Objects.equals(id, guest.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

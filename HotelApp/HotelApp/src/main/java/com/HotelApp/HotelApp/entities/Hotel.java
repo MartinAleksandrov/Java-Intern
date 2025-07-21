@@ -6,6 +6,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.CascadeType;
+
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Set;
 import java.util.HashSet;
@@ -180,4 +182,16 @@ public class Hotel {
         this.guests.add(guest);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Hotel hotel = (Hotel) o;
+        return Objects.equals(id, hotel.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

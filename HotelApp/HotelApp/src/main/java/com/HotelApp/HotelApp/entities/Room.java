@@ -10,6 +10,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -118,4 +119,15 @@ public class Room {
         isBooked = booked;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(id, room.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

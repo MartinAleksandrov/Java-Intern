@@ -3,6 +3,7 @@ package com.HotelApp.HotelApp.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Date;
 
@@ -99,4 +100,15 @@ public class Booking {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(id, booking.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

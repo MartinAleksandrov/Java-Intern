@@ -13,7 +13,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 
 
-
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -113,5 +113,17 @@ public class Staff {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Staff staff = (Staff) o;
+        return Objects.equals(id, staff.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
