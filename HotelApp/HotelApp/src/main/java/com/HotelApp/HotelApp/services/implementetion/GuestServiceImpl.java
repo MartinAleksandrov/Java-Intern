@@ -7,6 +7,7 @@ import com.HotelApp.HotelApp.repositories.GuestRepository;
 import com.HotelApp.HotelApp.services.contracts.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 @Service
 public class GuestServiceImpl implements GuestService {
@@ -27,5 +28,14 @@ public class GuestServiceImpl implements GuestService {
         var newGuest = guestRepository.save(guest);
         return guestMapper.toDto(newGuest);
 
+    }
+
+    @Override
+    public boolean removeGuest(UUID id) {
+
+        guestRepository.deleteById(id);
+        guestRepository.flush();
+
+        return guestRepository.existsById(id);
     }
 }
