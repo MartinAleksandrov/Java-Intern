@@ -36,17 +36,22 @@ public class Guest {
     private Hotel hotel;
 
 
+    @OneToOne(mappedBy = "guest",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Booking booking;
+
+
 
     //Constructors
     public Guest() {}
 
-    public Guest(String firstName, String lastName, Short age, Gender gender, String phone, Hotel hotel) {
+    public Guest(String firstName, String lastName, Short age, Gender gender, String phone, Hotel hotel, Booking booking) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
         this.phone = phone;
         this.hotel = hotel;
+        this.booking = booking;
     }
 
 
@@ -103,6 +108,8 @@ public class Guest {
     public UUID getId() {
         return id;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

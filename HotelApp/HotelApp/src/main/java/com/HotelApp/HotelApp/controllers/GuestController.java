@@ -25,8 +25,8 @@ public class GuestController {
         return new ResponseEntity<>(guestService.createGuest(guestDto), HttpStatus.CREATED);
     }
 
-    @DeleteMapping
-    public void deleteGuest(@RequestParam UUID id) {
+    @DeleteMapping("/removeGuest/{id}")
+    public void deleteGuest(@PathVariable UUID id) {
         guestService.removeGuest(id);
     }
 }

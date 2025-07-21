@@ -26,7 +26,7 @@ public class Booking {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "guest_id")
     private Guest guest;
 

@@ -8,6 +8,8 @@ import com.HotelApp.HotelApp.services.contracts.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class RoomServiceImpl implements RoomService {
 
@@ -40,5 +42,15 @@ public class RoomServiceImpl implements RoomService {
         newRoom.setHotel(hotel);
         roomRepository.save(newRoom);
         return roomMapper.toDto(newRoom);
+    }
+
+    @Override
+    public void removeRoom(UUID roomId) {
+        roomRepository.deleteById(roomId);
+        roomRepository.flush();
+
+        if(roomRepository.existsById(roomId)) {
+            throw new RuntimeException("Something went wrong, room is not deleted");
+        }
     }
 }
