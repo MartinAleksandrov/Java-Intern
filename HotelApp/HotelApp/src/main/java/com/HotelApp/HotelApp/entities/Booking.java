@@ -26,13 +26,11 @@ public class Booking {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-                         CascadeType.REFRESH, CascadeType.PERSIST})
+    @OneToOne
     @JoinColumn(name = "guest_id")
     private Guest guest;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-                          CascadeType.REFRESH, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 

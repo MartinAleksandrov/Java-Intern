@@ -40,8 +40,7 @@ public class Staff {
     @Column(name = "role")
     private Role role;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-                          CascadeType.REFRESH, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 

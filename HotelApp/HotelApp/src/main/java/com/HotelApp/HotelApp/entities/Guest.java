@@ -31,8 +31,7 @@ public class Guest {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-                          CascadeType.REFRESH, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 

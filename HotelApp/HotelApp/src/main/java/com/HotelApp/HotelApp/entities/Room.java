@@ -38,8 +38,7 @@ public class Room {
         @Column(name = "is_booked")
         private Boolean isBooked;
 
-        @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-                              CascadeType.REFRESH, CascadeType.PERSIST})
+        @ManyToOne
         @JoinColumn(name = "hotel_id")
         private Hotel hotel;
 
