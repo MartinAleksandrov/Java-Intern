@@ -18,7 +18,7 @@ public class Hotel {
 
     @Id
     @GeneratedValue()
-    @Column(columnDefinition = "UUID")
+    @Column(columnDefinition = "BINARY(16)", nullable = false,updatable = false)
     private UUID id;
 
     @Column(name = "name")

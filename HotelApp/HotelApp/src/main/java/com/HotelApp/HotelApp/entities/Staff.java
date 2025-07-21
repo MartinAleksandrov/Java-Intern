@@ -19,8 +19,8 @@ import java.util.UUID;
 @Entity
 public class Staff {
     @Id
-    @GeneratedValue()
-    @Column(columnDefinition = "BINARY(16)")
+    @GeneratedValue
+    @Column(columnDefinition = "BINARY(16)", nullable = false,updatable = false)
     private UUID id;
 
     @Column(name = "first_name")
