@@ -31,11 +31,13 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public boolean removeGuest(UUID id) {
+    public void removeGuest(UUID id) {
 
         guestRepository.deleteById(id);
         guestRepository.flush();
 
-        return guestRepository.existsById(id);
+        if(guestRepository.existsById(id)){
+            throw new RuntimeException("Guest with id " + id + " already exists");
+        }
     }
 }

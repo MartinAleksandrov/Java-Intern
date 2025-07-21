@@ -6,6 +6,6 @@ public interface GuestService {
 
     NewGuestDto createGuest(NewGuestDto guestDto);
 
-    boolean removeGuest(UUID id);
+    void removeGuest(UUID id);
 
 }
