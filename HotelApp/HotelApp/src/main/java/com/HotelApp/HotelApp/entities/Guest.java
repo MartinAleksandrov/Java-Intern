@@ -22,7 +22,7 @@ public class Guest {
     private String lastName;
 
     @Column(name = "age")
-    private Short age;
+    private short age;
 
     @Column(name = "gender",nullable = false)
     @Enumerated(EnumType.STRING)
@@ -44,7 +44,7 @@ public class Guest {
     //Constructors
     public Guest() {}
 
-    public Guest(String firstName, String lastName, Short age, Gender gender, String phone, Hotel hotel, Booking booking) {
+    public Guest(String firstName, String lastName, short age, Gender gender, String phone, Hotel hotel, Booking booking) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -73,11 +73,11 @@ public class Guest {
         this.lastName = lastName;
     }
 
-    public Short getAge() {
+    public short getAge() {
         return age;
     }
 
-    public void setAge(Short age) {
+    public void setAge(short age) {
         this.age = age;
     }
 
@@ -108,7 +108,6 @@ public class Guest {
     public UUID getId() {
         return id;
     }
-
 
 
     @Override

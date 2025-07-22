@@ -19,7 +19,7 @@ public class NewGuestDto {
 
     @NotNull(message = "Age is required")
     @Range(min = 0, max = 111)
-    private Short age;
+    private short age;
 
     @NotNull(message = "Gender is required")
     private Gender gender;

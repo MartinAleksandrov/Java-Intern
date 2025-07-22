@@ -14,15 +14,15 @@ public class NewRoomDto {
     private String name;
 
     @NotNull(message = "Size is required")
-    private Double size;
+    private double size;
 
     @Range(min = 1, max = 20,message = "Floor must be in range 1-20")
-    private Integer floor;
+    private int floor;
 
     @Positive
     private BigDecimal price;
 
-    private Boolean isBooked;
+    private boolean isBooked;
 
     private String hotelName;
 
@@ -30,7 +30,7 @@ public class NewRoomDto {
     /////////////////////
     public NewRoomDto() {}
 
-    public NewRoomDto(String name, Double size, Integer floor, BigDecimal price, Boolean isBooked, String hotelName) {
+    public NewRoomDto(String name, double size, int floor, BigDecimal price, boolean isBooked, String hotelName) {
         this.name = name;
         this.size = size;
         this.floor = floor;
@@ -51,19 +51,19 @@ public class NewRoomDto {
         this.name = name;
     }
 
-    public Double getSize() {
+    public double getSize() {
         return size;
     }
 
-    public void setSize(Double size) {
+    public void setSize(double size) {
         this.size = size;
     }
 
-    public Integer getFloor() {
+    public int getFloor() {
         return floor;
     }
 
-    public void setFloor(Integer floor) {
+    public void setFloor(int floor) {
         this.floor = floor;
     }
 
@@ -75,11 +75,11 @@ public class NewRoomDto {
         this.price = price;
     }
 
-    public Boolean getIsBooked() {
+    public boolean getIsBooked() {
         return isBooked;
     }
 
-    public void setIsBooked(Boolean booked) {
+    public void setIsBooked(boolean booked) {
         isBooked = booked;
     }
 

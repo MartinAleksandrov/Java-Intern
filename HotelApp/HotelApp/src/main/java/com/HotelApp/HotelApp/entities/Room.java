@@ -6,7 +6,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 
 import java.math.BigDecimal;
@@ -26,17 +25,17 @@ public class Room {
         @Column(name = "name")
         private String name;
 
-        @Column(name = "size")
-        private Double size;
+        @Column(name = "size",nullable = false)
+        private double size;
 
         @Column(name = "floor")
-        private Integer floor;
+        private int floor;
 
         @Column(name = "price")
         private BigDecimal price;
 
         @Column(name = "is_booked")
-        private Boolean isBooked;
+        private boolean isBooked;
 
         @ManyToOne
         @JoinColumn(name = "hotel_id")
@@ -46,7 +45,7 @@ public class Room {
         //Constructors
         public Room() {}
 
-        public Room(String name, Double size, Integer floor, BigDecimal price, Boolean isBooked, Hotel hotel) {
+        public Room(String name, double size, int floor, BigDecimal price, boolean isBooked, Hotel hotel) {
             this.name = name;
             this.size = size;
             this.floor = floor;
@@ -78,11 +77,11 @@ public class Room {
             return size;
         }
 
-        public void setSize(Double size) {
+        public void setSize(double size) {
             this.size = size;
         }
 
-        public Integer getFloor() {
+        public int getFloor() {
             return floor;
         }
 
@@ -94,11 +93,11 @@ public class Room {
             this.price = price;
         }
 
-        public Boolean getIsBooked() {
+        public boolean getIsBooked() {
             return isBooked;
         }
 
-        public void setIsBooked(Boolean isBooked) {
+        public void setIsBooked(boolean isBooked) {
             this.isBooked = isBooked;
         }
 

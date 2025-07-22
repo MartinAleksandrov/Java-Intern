@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 
 
@@ -34,7 +33,7 @@ public class Staff {
     private Gender gender;
 
     @Column(name = "age")
-    private Short age;
+    private short age;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
