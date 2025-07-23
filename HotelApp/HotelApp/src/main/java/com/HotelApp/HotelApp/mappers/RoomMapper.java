@@ -3,7 +3,11 @@ package com.HotelApp.HotelApp.mappers;
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import com.HotelApp.HotelApp.entities.Room;
-import org.mapstruct.*;
+import org.mapstruct.BeanMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {
