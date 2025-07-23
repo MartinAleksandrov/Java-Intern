@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.services.contracts;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import java.util.UUID;
 
 public interface RoomService {
@@ -9,5 +10,5 @@ public interface RoomService {
 
     void removeRoom(UUID roomId);
 
-    NewRoomDto updateRoom(UUID roomId, NewRoomDto newRoomDto);
+    UpdateRoomDto updateRoom(UUID roomId, UpdateRoomDto newRoomDto);
 }

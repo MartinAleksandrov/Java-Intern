@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.services.implementetion;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.repositories.RoomRepository;
@@ -54,7 +55,13 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public NewRoomDto updateRoom(UUID roomId, NewRoomDto newRoomDto) {
-        return null;
+    public UpdateRoomDto updateRoom(UUID roomId, UpdateRoomDto newRoomDto) {
+
+        var room = roomRepository.findById(roomId).orElseThrow();
+
+        roomMapper.updateEntityFromDto(newRoomDto, room);
+        roomRepository.save(room);
+
+        return roomMapper.toUpdatedDto(room);
     }
 }
