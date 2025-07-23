@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
-
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
@@ -35,7 +34,7 @@ public class Room {
         private BigDecimal price;
 
         @Column(name = "is_booked")
-        private boolean isBooked;
+        private Boolean isBooked;
 
         @ManyToOne
         @JoinColumn(name = "hotel_id")
@@ -93,11 +92,11 @@ public class Room {
             this.price = price;
         }
 
-        public boolean getIsBooked() {
+        public Boolean getIsBooked() {
             return isBooked;
         }
 
-        public void setIsBooked(boolean isBooked) {
+        public void setIsBooked(Boolean isBooked) {
             this.isBooked = isBooked;
         }
 

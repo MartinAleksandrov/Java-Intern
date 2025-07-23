@@ -1,6 +1,12 @@
 package com.HotelApp.HotelApp.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+
 
 @Entity
 @Table(name = "guest_event")

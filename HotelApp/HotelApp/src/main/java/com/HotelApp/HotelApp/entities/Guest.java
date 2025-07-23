@@ -1,8 +1,17 @@
 package com.HotelApp.HotelApp.entities;
 
 import com.HotelApp.HotelApp.enums.Gender;
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToOne;
 import java.util.Objects;
 import java.util.UUID;
 

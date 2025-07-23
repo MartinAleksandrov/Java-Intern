@@ -5,13 +5,11 @@ import com.HotelApp.HotelApp.dtos.hotelDtos.HotelDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
 import com.HotelApp.HotelApp.dtos.staffDtos.AllHotelStaffDto;
 import com.HotelApp.HotelApp.entities.Hotel;
-import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.HotelMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.services.contracts.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Set;
 
 
@@ -51,6 +49,7 @@ public class HotelServiceImpl implements HotelService {
          throw new RuntimeException("Hotel not found");
 
     }
+
     @Override
     public Set<AllHotelStaffDto> getAllStaff(String hotelName) {
         var hotel = hotelRepository.findHotelByName(hotelName);

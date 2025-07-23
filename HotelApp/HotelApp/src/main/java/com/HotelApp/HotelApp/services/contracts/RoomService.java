@@ -8,4 +8,6 @@ public interface RoomService {
     NewRoomDto createRoom(NewRoomDto newRoomDto);
 
     void removeRoom(UUID roomId);
+
+    NewRoomDto updateRoom(UUID roomId, NewRoomDto newRoomDto);
 }

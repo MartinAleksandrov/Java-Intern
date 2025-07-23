@@ -1,12 +1,9 @@
 package com.HotelApp.HotelApp.mappers;
 
-import com.HotelApp.HotelApp.dtos.roomDtos.AllRoomsDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
 import com.HotelApp.HotelApp.entities.Room;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {

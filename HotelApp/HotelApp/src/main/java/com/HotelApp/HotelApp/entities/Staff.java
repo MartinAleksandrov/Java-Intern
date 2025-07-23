@@ -10,10 +10,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
-
-
 import java.util.Objects;
 import java.util.UUID;
+
 
 @Entity
 public class Staff {

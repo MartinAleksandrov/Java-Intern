@@ -13,8 +13,6 @@ import com.HotelApp.HotelApp.repositories.RoomRepository;
 import com.HotelApp.HotelApp.services.contracts.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.Array;
 import java.util.UUID;
 
 @Service

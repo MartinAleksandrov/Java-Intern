@@ -22,7 +22,7 @@ public class NewRoomDto {
     @Positive
     private BigDecimal price;
 
-    private boolean isBooked;
+    private Boolean isBooked;
 
     private String hotelName;
 
@@ -75,11 +75,11 @@ public class NewRoomDto {
         this.price = price;
     }
 
-    public boolean getIsBooked() {
+    public Boolean getIsBooked() {
         return isBooked;
     }
 
-    public void setIsBooked(boolean booked) {
+    public void setIsBooked(Boolean booked) {
         isBooked = booked;
     }
 
