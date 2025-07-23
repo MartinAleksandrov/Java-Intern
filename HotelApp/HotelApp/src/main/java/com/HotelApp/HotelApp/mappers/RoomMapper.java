@@ -1,9 +1,9 @@
 package com.HotelApp.HotelApp.mappers;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import com.HotelApp.HotelApp.entities.Room;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {
@@ -18,4 +18,9 @@ public interface RoomMapper {
     @Mapping(target = "isBooked" , source = "isBooked")
     Room toEntity(NewRoomDto newRoomDto);
 
+    UpdateRoomDto toUpdatedDto (Room room);
+
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(UpdateRoomDto dto, @MappingTarget Room entity);
 }

@@ -1,17 +1,14 @@
 package com.HotelApp.HotelApp.controllers;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import com.HotelApp.HotelApp.services.contracts.RoomService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 
 @RestController
@@ -35,5 +32,11 @@ public class RoomController {
     @DeleteMapping("/removeRoom/{id}")
     public void deleteRoom(@PathVariable UUID id) {
         roomService.removeRoom(id);
+    }
+
+    @PutMapping("/updateRoom/{id}")
+    public ResponseEntity<UpdateRoomDto> updateRoom(@PathVariable UUID id,@Valid  @RequestBody UpdateRoomDto roomDto) {
+
+        return new ResponseEntity<>(roomService.updateRoom(id, roomDto), HttpStatus.OK);
     }
 }
