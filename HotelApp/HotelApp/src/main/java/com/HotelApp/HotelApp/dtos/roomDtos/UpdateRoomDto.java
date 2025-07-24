@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 
 public class UpdateRoomDto {
 
+    private String roomId;
+
     @NotBlank(message = "Name is required and must be max 50 symbols!")
     @Size(max = 50)
     private String name;
@@ -54,5 +56,13 @@ public class UpdateRoomDto {
 
     public void setSize(double size) {
         this.size = size;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 }
