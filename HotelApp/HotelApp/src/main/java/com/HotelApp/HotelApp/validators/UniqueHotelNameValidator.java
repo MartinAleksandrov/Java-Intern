@@ -22,14 +22,14 @@ public class UniqueHotelNameValidator implements ConstraintValidator<UniqueHotel
 
     //Идва от интерфейса
     @Override
-    public boolean isValid(String hotelname, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String hotelName, ConstraintValidatorContext constraintValidatorContext) {
 
         //Тези проверки оставяме на анотацията @NotBlank
-        if (hotelname == null || hotelname.isEmpty()) {
+        if (hotelName == null || hotelName.isEmpty()) {
             return true;
         }
 
         //Създаваме нов метод в hotelRepository
-        return !hotelRepository.existsByName(hotelname.trim());
+        return !hotelRepository.existsByName(hotelName.trim());
     }
 }
