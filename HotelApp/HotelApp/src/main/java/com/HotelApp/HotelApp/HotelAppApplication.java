@@ -12,15 +12,5 @@ public class HotelAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HotelAppApplication.class, args);
-
-		EntityManager em = JpaUtil.getEntityManager();
-
-		em.getTransaction().begin();
-		System.out.println("Successfully created EntityManager");
-
-		em.getTransaction().commit();
-
-		em.close();
-
 	}
 }
