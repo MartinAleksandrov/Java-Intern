@@ -1,4 +1,59 @@
 package com.HotelApp.HotelApp.ServiceTests;
 
+import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.mappers.RoomMapper;
+import com.HotelApp.HotelApp.repositories.HotelRepository;
+import com.HotelApp.HotelApp.repositories.RoomRepository;
+import com.HotelApp.HotelApp.services.implementetion.RoomServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
 public class RoomServiceImplTest {
+
+    @Mock
+    private RoomRepository roomRepo;
+
+    @Mock
+    private RoomMapper roomMapper;
+
+    @Mock
+    private HotelRepository hotelRepo;
+
+    @InjectMocks
+    private RoomServiceImpl roomService;
+
+    private NewRoomDto roomDto;
+
+    @BeforeEach
+    public void setUp() {
+        roomDto = new NewRoomDto();
+        roomDto.setName("Test Room");
+        roomDto.setHotelName("Test Hotel");
+    }
+
+    @Test
+    public void createRoom_MustThrow_Exception_If_HotelName_NotFound() {
+
+        when(hotelRepo.findHotelByName(roomDto.getHotelName())).thenReturn(null);
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            roomService.createRoom(roomDto);
+        });
+
+        //Checks if exception message is equal to given one
+        assertEquals("Hotel not found", exception.getMessage());
+
+        //save method never must be invoked
+        verify(roomRepo, never()).save(any());
+
+
+    }
 }
