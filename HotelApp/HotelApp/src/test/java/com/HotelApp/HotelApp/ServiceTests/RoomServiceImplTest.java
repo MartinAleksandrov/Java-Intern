@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,13 +36,22 @@ public class RoomServiceImplTest {
     private RoomServiceImpl roomService;
 
     private NewRoomDto roomDto;
+    private Room room;
 
     @BeforeEach
     public void setUp() {
         roomDto = new NewRoomDto();
-        
+
         roomDto.setName("Test Room");
         roomDto.setHotelName("Test Hotel");
+
+        room = new Room();
+        room.setId(UUID.randomUUID());
+        room.setName("Room");
+        room.setSize(5);
+        room.setPrice(BigDecimal.valueOf(5.5));
+
+
 
     }
 
@@ -66,7 +76,7 @@ public class RoomServiceImplTest {
     @Test
     public void removeRoom_Must_Throw_Exception_If_room_does_not_exist() {
 
-        roomService.createRoom();
+
 
         Room room = new Room();
         room.setId(UUID.randomUUID());
