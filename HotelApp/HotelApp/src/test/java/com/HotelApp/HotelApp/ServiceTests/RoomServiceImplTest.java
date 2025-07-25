@@ -76,18 +76,19 @@ public class RoomServiceImplTest {
     @Test
     public void removeRoom_Must_Throw_Exception_If_room_does_not_exist() {
 
-
-
         Room room = new Room();
         room.setId(UUID.randomUUID());
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-           roomService.removeRoom(room.getId());
-        });
+        doNothing().when(roomRepo).deleteById(room.getId());
+        doNothing().when(roomRepo).flush();
+        when(roomRepo.existsById(room.getId())).thenReturn(true);
 
+        // when / then
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> roomService.removeRoom(roomId));
         assertEquals("Something went wrong, room is not deleted", exception.getMessage());
 
-
-
+        verify(roomRepo).deleteById(room.getId());
+        verify(roomRepo).flush();
+        verify(roomRepo).existsById(room.getId());
     }
 }
