@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.ServiceTests;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.repositories.RoomRepository;
@@ -11,6 +12,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -35,8 +39,10 @@ public class RoomServiceImplTest {
     @BeforeEach
     public void setUp() {
         roomDto = new NewRoomDto();
+        
         roomDto.setName("Test Room");
         roomDto.setHotelName("Test Hotel");
+
     }
 
     @Test
@@ -53,6 +59,24 @@ public class RoomServiceImplTest {
 
         //save method never must be invoked
         verify(roomRepo, never()).save(any());
+
+
+    }
+
+    @Test
+    public void removeRoom_Must_Throw_Exception_If_room_does_not_exist() {
+
+        roomService.createRoom();
+
+        Room room = new Room();
+        room.setId(UUID.randomUUID());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+           roomService.removeRoom(room.getId());
+        });
+
+        assertEquals("Something went wrong, room is not deleted", exception.getMessage());
+
 
 
     }
