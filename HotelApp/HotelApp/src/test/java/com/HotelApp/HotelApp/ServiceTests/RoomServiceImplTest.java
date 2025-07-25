@@ -12,13 +12,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.math.BigDecimal;
 import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+
 
 @ExtendWith(MockitoExtension.class)
 public class RoomServiceImplTest {
@@ -84,7 +85,7 @@ public class RoomServiceImplTest {
         when(roomRepo.existsById(room.getId())).thenReturn(true);
 
         // when / then
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> roomService.removeRoom(roomId));
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> roomService.removeRoom(room.getId()));
         assertEquals("Something went wrong, room is not deleted", exception.getMessage());
 
         verify(roomRepo).deleteById(room.getId());
