@@ -47,7 +47,12 @@ public class Hotel {
 
 
     //Constructors
-    public Hotel() {}
+    public Hotel() {
+        rooms    = new HashSet<Room>();
+        guests   = new HashSet<Guest>();
+        bookings = new HashSet<Booking>();
+        staffs   = new HashSet<Staff>();
+    }
 
     public Hotel(String name, Short stars, String owner, String city) {
         this.name = name;

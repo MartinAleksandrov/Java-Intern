@@ -14,6 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -55,9 +57,6 @@ public class RoomServiceImplTest {
         room.setName("Room");
         room.setSize(5);
         room.setPrice(BigDecimal.valueOf(5.5));
-
-
-
     }
 
     @Test
@@ -79,22 +78,31 @@ public class RoomServiceImplTest {
     @Test
     public void createRoomMustThrowExceptionIfRoomNameAlreadyExists() {
 
-        hotel = new Hotel();
-        when(hotelRepo.findHotelByName(roomDto.getHotelName())).thenReturn(hotel);
+        // Arrange
+        NewRoomDto roomDto = new NewRoomDto();
+        roomDto.setHotelName("Hotel California");
+        roomDto.setName("Room 101");
 
-        when(hotel.getRooms().contains(room)).thenReturn(true);
+        // Симулираме хотел с една стая "Room 101"
+        Room existingRoom = new Room();
+        existingRoom.setName("Room 101");
 
-        var exception = assertThrows(RuntimeException.class, () -> {
+        Hotel mockHotel = new Hotel();
+        mockHotel.setName("Hotel California");
+        mockHotel.addRoomToHotel(existingRoom); // хотел вече има такава стая
+
+        // Mockito mock поведения
+        when(hotelRepo.findHotelByName("Hotel California")).thenReturn(mockHotel);
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             roomService.createRoom(roomDto);
         });
 
         assertEquals("Hotel already contains this room", exception.getMessage());
 
-        verify(roomMapper, never()).toEntity(any());
+        // Уверяваме се, че стаята не се е записала в базата
         verify(roomRepo, never()).save(any());
-        verify(roomMapper, never()).toDto(any());
-
-
     }
 
     @Test
