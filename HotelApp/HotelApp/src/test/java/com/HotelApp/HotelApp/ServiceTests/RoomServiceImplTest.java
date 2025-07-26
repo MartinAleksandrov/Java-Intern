@@ -90,7 +90,10 @@ public class RoomServiceImplTest {
 
         assertEquals("Hotel already contains this room", exception.getMessage());
 
+        verify(roomMapper, never()).toEntity(any());
         verify(roomRepo, never()).save(any());
+        verify(roomMapper, never()).toDto(any());
+
 
     }
 
