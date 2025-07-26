@@ -89,6 +89,9 @@ public class RoomServiceImplTest {
         });
 
         assertEquals("Hotel already contains this room", exception.getMessage());
+
+        verify(roomRepo, never()).save(any());
+
     }
 
     @Test
