@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.ServiceTests;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.entities.Hotel;
 import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
@@ -40,6 +41,7 @@ public class RoomServiceImplTest {
 
     private NewRoomDto roomDto;
     private Room room;
+    private Hotel hotel;
 
     @BeforeEach
     public void setUp() {
@@ -72,8 +74,21 @@ public class RoomServiceImplTest {
 
         //save method never must be invoked
         verify(roomRepo, never()).save(any());
+    }
 
+    @Test
+    public void createRoomMustThrowExceptionIfRoomNameAlreadyExists() {
 
+        hotel = new Hotel();
+        when(hotelRepo.findHotelByName(roomDto.getHotelName())).thenReturn(hotel);
+
+        when(hotel.getRooms().contains(room)).thenReturn(true);
+
+        var exception = assertThrows(RuntimeException.class, () -> {
+            roomService.createRoom(roomDto);
+        });
+
+        assertEquals("Hotel already contains this room", exception.getMessage());
     }
 
     @Test
