@@ -58,7 +58,7 @@ public class RoomServiceImplTest {
     }
 
     @Test
-    public void createRoom_MustThrow_Exception_If_HotelName_NotFound() {
+    public void createRoomMustThrowExceptionIfHotelNameNotFound() {
 
         when(hotelRepo.findHotelByName(roomDto.getHotelName())).thenReturn(null);
 
@@ -104,7 +104,7 @@ public class RoomServiceImplTest {
     }
 
     @Test
-    public void removeRoom_Must_Throw_Exception_If_room_does_not_exist() {
+    public void removeRoomMustThrowExceptionIfRoomDoesNotExist() {
 
         Room room = new Room();
         room.setId(UUID.randomUUID());
