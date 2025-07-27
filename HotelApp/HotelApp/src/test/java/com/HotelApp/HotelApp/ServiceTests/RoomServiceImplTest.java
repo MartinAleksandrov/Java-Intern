@@ -18,11 +18,7 @@ import java.util.Set;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -46,8 +42,11 @@ public class RoomServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-        roomDto = new NewRoomDto();
 
+        hotel = new Hotel();
+        hotel.setName("Hotel");
+
+        roomDto = new NewRoomDto();
         roomDto.setName("Test Room");
         roomDto.setHotelName("Test Hotel");
 
@@ -56,6 +55,19 @@ public class RoomServiceImplTest {
         room.setName("Room");
         room.setSize(5);
         room.setPrice(BigDecimal.valueOf(5.5));
+    }
+
+    @Test
+    public void createRoomMustCreateNewRoomSuccessfully() {
+
+        when(hotelRepo.findHotelByName("Hotel")).thenReturn(hotel);
+
+        verify(roomRepo, times(1)).save(room);
+        verify(roomMapper,times(1)).toDto(room);
+
+        var result = assertEquals(NewRoomDto.class,() -> {
+            roomService.createRoom(roomDto);
+        });
     }
 
     @Test
