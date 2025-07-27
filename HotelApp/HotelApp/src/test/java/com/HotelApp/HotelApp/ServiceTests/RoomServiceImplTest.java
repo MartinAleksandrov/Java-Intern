@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
+import java.util.Set;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -87,7 +88,7 @@ public class RoomServiceImplTest {
 
         Hotel mockHotel = new Hotel();
         mockHotel.setName("Hotel California");
-        mockHotel.addRoomToHotel(existingRoom); // хотел вече има такава стая
+        mockHotel.setRooms(Set.of(existingRoom)); // хотел вече има такава стая
 
         // Mockito mock поведения
         when(hotelRepo.findHotelByName("Hotel California")).thenReturn(mockHotel);

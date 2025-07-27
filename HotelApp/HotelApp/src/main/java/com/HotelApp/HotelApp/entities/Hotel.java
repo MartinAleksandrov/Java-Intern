@@ -59,10 +59,6 @@ public class Hotel {
         this.stars = stars;
         this.owner = owner;
         this.city = city;
-        rooms    = new HashSet<Room>();
-        guests   = new HashSet<Guest>();
-        bookings = new HashSet<Booking>();
-        staffs   = new HashSet<Staff>();
     }
 
 
@@ -109,7 +105,7 @@ public class Hotel {
     }
 
     public void setRooms(Set<Room> rooms) {
-        if(this.rooms != null && !this.rooms.isEmpty()) {
+        if(this.rooms != null || !this.rooms.isEmpty()) {
           this.rooms.addAll(rooms);
         }
         else {
