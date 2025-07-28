@@ -48,11 +48,11 @@ public class RoomServiceImplTest {
 
         roomDto = new NewRoomDto();
         roomDto.setName("Test Room");
-        roomDto.setHotelName("Test Hotel");
+        roomDto.setHotelName("Hotel");
 
         room = new Room();
         room.setId(UUID.randomUUID());
-        room.setName("Room");
+        room.setName("Test Room");
         room.setSize(5);
         room.setPrice(BigDecimal.valueOf(5.5));
     }
@@ -62,23 +62,24 @@ public class RoomServiceImplTest {
 
         var expectedDto = new NewRoomDto();
         expectedDto.setName("Test Room");
-        expectedDto.setHotelName("Test Hotel");
+        expectedDto.setHotelName("Hotel");
 
         var newRoom = new Room();
         newRoom.setName("Test Room");
 
         when(hotelRepo.findHotelByName("Hotel")).thenReturn(hotel);
         when(roomMapper.toEntity(roomDto)).thenReturn(newRoom);
-        when(roomMapper.toDto(room)).thenReturn(expectedDto);
+        when(roomMapper.toDto(newRoom)).thenReturn(expectedDto);
 
-        NewRoomDto result = roomService.createRoom(expectedDto);
+        NewRoomDto result = roomService.createRoom(roomDto);
 
 
-        verify(roomMapper).toDto(room);
+        verify(roomMapper).toEntity(roomDto);
+        verify(roomMapper).toDto(newRoom);
         verify(roomRepo).save(newRoom);
-        verify(roomMapper).toDto(room);
 
-        assertEquals("Test Room", newRoom.getName());
+        assertEquals("Test Room", result.getName());
+        assertEquals("Hotel", result.getHotelName());
 
     }
 
