@@ -8,6 +8,8 @@ import com.HotelApp.HotelApp.repositories.RoomRepository;
 import com.HotelApp.HotelApp.services.contracts.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
@@ -61,6 +63,7 @@ public class RoomServiceImpl implements RoomService {
 
         roomMapper.updateEntityFromDto(newRoomDto, room);
         roomRepository.save(room);
+
 
         return roomMapper.toUpdatedDto(room);
     }

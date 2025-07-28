@@ -1,6 +1,7 @@
 package com.HotelApp.HotelApp.ServiceTests;
 
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
+import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
 import com.HotelApp.HotelApp.entities.Hotel;
 import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
@@ -14,6 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -146,5 +148,20 @@ public class RoomServiceImplTest {
         verify(roomRepo).deleteById(room.getId());
         verify(roomRepo).flush();
         verify(roomRepo).existsById(room.getId());
+    }
+
+    @Test
+    public void updateRoomMustThrowExceptionIfRoomDoesNotExist() {
+
+        var dto = new UpdateRoomDto();
+
+        when(roomRepo.findById(room.getId())).thenReturn(null);
+
+        var ex = assertThrows(NoSuchElementException.class, () -> {
+            roomService.updateRoom(room.getId(),dto);
+        });
+
+
+        assertEquals("Room not found", ex.getMessage());
     }
 }
