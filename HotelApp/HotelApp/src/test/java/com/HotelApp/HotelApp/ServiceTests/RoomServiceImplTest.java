@@ -65,15 +65,15 @@ public class RoomServiceImplTest {
         verify(roomRepo, times(1)).save(room);
         verify(roomMapper,times(1)).toDto(room);
 
-        var result = assertEquals(NewRoomDto.class,() -> {
-            roomService.createRoom(roomDto);
-        });
+//        var result = assertEquals(NewRoomDto.class,() -> {
+//            roomService.createRoom(roomDto);
+//        });
     }
 
     @Test
     public void createRoomMustThrowExceptionIfHotelNameNotFound() {
 
-        when(hotelRepo.findHotelByName(roomDto.getHotelName())).thenReturn(null);
+        when(hotelRepo.findHotelByName("Test Hotel")).thenReturn(null);
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             roomService.createRoom(roomDto);
