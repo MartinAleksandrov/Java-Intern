@@ -59,7 +59,8 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public UpdateRoomDto updateRoom(UUID roomId, UpdateRoomDto newRoomDto) {
 
-        var room = roomRepository.findById(roomId).orElseThrow();
+        var room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new NoSuchElementException("Room not found"));
 
         roomMapper.updateEntityFromDto(newRoomDto, room);
         roomRepository.save(room);

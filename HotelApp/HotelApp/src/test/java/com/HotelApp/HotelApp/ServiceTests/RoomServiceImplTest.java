@@ -158,7 +158,7 @@ public class RoomServiceImplTest {
 
         var id = UUID.randomUUID();
 
-        when(roomRepo.findById(room.getId())).thenReturn(Optional.ofNullable(room));
+        when(roomRepo.findById(id)).thenReturn(Optional.empty());
 
         var ex = assertThrows(NoSuchElementException.class, () -> {
             roomService.updateRoom(id,dto);
@@ -166,5 +166,7 @@ public class RoomServiceImplTest {
 
 
         assertEquals("Room not found", ex.getMessage());
+
+        
     }
 }
