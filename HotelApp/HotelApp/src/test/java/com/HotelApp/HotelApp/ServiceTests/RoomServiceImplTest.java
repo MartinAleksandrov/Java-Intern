@@ -60,14 +60,25 @@ public class RoomServiceImplTest {
     @Test
     public void createRoomMustCreateNewRoomSuccessfully() {
 
+        var expectedDto = new NewRoomDto();
+        expectedDto.setName("Test Room");
+        expectedDto.setHotelName("Test Hotel");
+
+        var newRoom = new Room();
+        newRoom.setName("Test Room");
+
         when(hotelRepo.findHotelByName("Hotel")).thenReturn(hotel);
+        when(roomMapper.toEntity(roomDto)).thenReturn(newRoom);
+        when(roomMapper.toDto(room)).thenReturn(expectedDto);
 
-        verify(roomRepo, times(1)).save(room);
-        verify(roomMapper,times(1)).toDto(room);
 
-//        var result = assertEquals(NewRoomDto.class,() -> {
-//            roomService.createRoom(roomDto);
-//        });
+
+        verify(roomMapper).toDto(room);
+        verify(roomRepo).save(newRoom);
+        verify(roomMapper).toDto(room);
+
+        assertEquals("Test Room", newRoom.getName());
+
     }
 
     @Test
