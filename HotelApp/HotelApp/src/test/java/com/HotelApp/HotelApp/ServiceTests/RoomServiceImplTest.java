@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -155,10 +156,12 @@ public class RoomServiceImplTest {
 
         var dto = new UpdateRoomDto();
 
-        when(roomRepo.findById(room.getId())).thenReturn(null);
+        var id = UUID.randomUUID();
+
+        when(roomRepo.findById(room.getId())).thenReturn(Optional.ofNullable(room));
 
         var ex = assertThrows(NoSuchElementException.class, () -> {
-            roomService.updateRoom(room.getId(),dto);
+            roomService.updateRoom(id,dto);
         });
 
 
