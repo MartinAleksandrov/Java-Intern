@@ -86,7 +86,7 @@ public class RoomServiceImplTest {
     @Test
     public void createRoomMustThrowExceptionIfHotelNameNotFound() {
 
-        when(hotelRepo.findHotelByName("Test Hotel")).thenReturn(null);
+        when(hotelRepo.findHotelByName("Hotel")).thenReturn(null);
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             roomService.createRoom(roomDto);
