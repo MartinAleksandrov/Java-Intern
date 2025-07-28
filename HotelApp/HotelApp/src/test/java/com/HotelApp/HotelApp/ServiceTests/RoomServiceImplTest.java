@@ -71,6 +71,7 @@ public class RoomServiceImplTest {
         when(roomMapper.toEntity(roomDto)).thenReturn(newRoom);
         when(roomMapper.toDto(room)).thenReturn(expectedDto);
 
+        NewRoomDto result = roomService.createRoom(expectedDto);
 
 
         verify(roomMapper).toDto(room);
