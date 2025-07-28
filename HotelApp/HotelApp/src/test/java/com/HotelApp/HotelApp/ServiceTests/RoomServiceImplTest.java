@@ -154,19 +154,21 @@ public class RoomServiceImplTest {
     @Test
     public void updateRoomMustThrowExceptionIfRoomDoesNotExist() {
 
+        //Arrange
         var dto = new UpdateRoomDto();
-
         var id = UUID.randomUUID();
 
+        //Act
         when(roomRepo.findById(id)).thenReturn(Optional.empty());
 
+        //Assert
         var ex = assertThrows(NoSuchElementException.class, () -> {
             roomService.updateRoom(id,dto);
         });
 
-
         assertEquals("Room not found", ex.getMessage());
 
-        
+        verify(roomRepo, never()).save(any());
+        verify(roomMapper, never()).toUpdatedDto(any());
     }
 }
