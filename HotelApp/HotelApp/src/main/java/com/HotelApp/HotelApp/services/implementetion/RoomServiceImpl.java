@@ -15,16 +15,16 @@ import java.util.UUID;
 @Service
 public class RoomServiceImpl implements RoomService {
 
-    private final RoomRepository roomRepository;
-    private final HotelRepository hotelRepository;
-    private final RoomMapper roomMapper;
+        private final RoomRepository roomRepository;
+        private final HotelRepository hotelRepository;
+        private final RoomMapper roomMapper;
 
     @Autowired
     public RoomServiceImpl(RoomRepository roomRepository, RoomMapper roomMapper, HotelRepository hotelRepository) {
-        this.roomRepository = roomRepository;
-        this.hotelRepository = hotelRepository;
-        this.roomMapper = roomMapper;
-    }
+            this.roomRepository = roomRepository;
+            this.hotelRepository = hotelRepository;
+            this.roomMapper = roomMapper;
+        }
 
 
     @Override
