@@ -41,4 +41,9 @@ public class TestedClass {
 
         return res;
     }
+
+    public boolean isEmailCorrect(String email) {
+
+        return email.matches("^[^@]+@[^@]+\\.[^@]+$");
+    }
 }
