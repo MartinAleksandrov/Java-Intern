@@ -3,16 +3,21 @@ package com.HotelApp.HotelApp;
 import com.HotelApp.HotelApp.Others.MockedClass;
 import com.HotelApp.HotelApp.Others.TestedClass;
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.doReturn;
+
 
 @ExtendWith(MockitoExtension.class)
 public class TestedClassTests {
@@ -52,9 +57,7 @@ public class TestedClassTests {
         doThrow(new RuntimeException("No emails have been saved"))
                 .when(testedClass).clearEmails();
 
-        RuntimeException result = assertThrows(RuntimeException.class, () -> {
-            testedClass.clearEmails();
-        });
+        RuntimeException result = assertThrows(RuntimeException.class, () -> testedClass.clearEmails());
 
         assertEquals("No emails have been saved", result.getMessage());
     }
@@ -87,11 +90,19 @@ public class TestedClassTests {
         //assertEquals(24,age);
         //assertEquals(1.2,height);
 
-        softly.assertThat(name).isEqualTo("PESHO");
+        softly.assertThat(name).isEqualTo("Tosheto Petrov");
         softly.assertThat(age).isEqualTo(21);
-        softly.assertThat(height).isEqualTo(1.3);
+        softly.assertThat(height).isEqualTo(1.2);
 
-        //This collect all asserts
+        //This collect all asserts, without this method there will be no report
         softly.assertAll();
+    }
+
+
+    //Parameterized test 
+    @ParameterizedTest
+    @ValueSource(strings = {"ivan@ab@v.bg","pesho@abv.bg","joro@gmail.com"})
+    public void valueSourceShouldWorkCorrectly(String value){
+        assertTrue(testedClass.isEmailCorrect(value));
     }
 }
