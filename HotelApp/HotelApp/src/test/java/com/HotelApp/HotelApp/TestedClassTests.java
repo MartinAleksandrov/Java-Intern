@@ -2,6 +2,7 @@ package com.HotelApp.HotelApp;
 
 import com.HotelApp.HotelApp.Others.MockedClass;
 import com.HotelApp.HotelApp.Others.TestedClass;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -69,5 +70,28 @@ public class TestedClassTests {
 
         var result = tc.usedMockedClass();
         assertEquals("success", result);
+    }
+
+    //Soft Assertion allows to pass through all asserts
+    @Test
+    public void softAssertionsAllowsAllAssertionsToPass(){
+
+        SoftAssertions softly = new SoftAssertions();
+
+        String name = "Tosheto Petrov";
+        int age = 21;
+        double height = 1.2;
+
+        //First assert fail, other are ignored
+        //assertEquals("SOME NAME",name);
+        //assertEquals(24,age);
+        //assertEquals(1.2,height);
+
+        softly.assertThat(name).isEqualTo("PESHO");
+        softly.assertThat(age).isEqualTo(21);
+        softly.assertThat(height).isEqualTo(1.3);
+
+        //This collect all asserts
+        softly.assertAll();
     }
 }
