@@ -99,7 +99,7 @@ public class TestedClassTests {
     }
 
 
-    //Parameterized test 
+    //Parameterized test
     @ParameterizedTest
     @ValueSource(strings = {"ivan@ab@v.bg","pesho@abv.bg","joro@gmail.com"})
     public void valueSourceShouldWorkCorrectly(String value){
