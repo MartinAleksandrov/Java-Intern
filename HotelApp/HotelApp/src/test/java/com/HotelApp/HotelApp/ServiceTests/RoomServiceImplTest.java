@@ -171,4 +171,36 @@ public class RoomServiceImplTest {
         verify(roomRepo, never()).save(any());
         verify(roomMapper, never()).toUpdatedDto(any());
     }
+
+    @Test
+    public void updateRoomMustUpdateRoomSuccessfully() {
+
+        var room1 = new Room();
+        room1.setId(UUID.randomUUID());
+        room1.setName("Room 1");
+        room1.setSize(5);
+
+        var updateRoomDto = new UpdateRoomDto();
+        updateRoomDto.setName("Room 2");
+        updateRoomDto.setSize(2);
+
+        // Очакван DTO след update (от mapper)
+        var updatedDto = new UpdateRoomDto();
+        updatedDto.setName("Room 2");
+        updatedDto.setSize(2);
+
+        when(roomRepo.findById(room1.getId())).thenReturn(Optional.of(room1));
+        when(roomRepo.save(room1)).thenReturn(room1); // по избор, зависи от нуждите
+        when(roomMapper.toUpdatedDto(room1)).thenReturn(updatedDto);
+
+        var result = roomService.updateRoom(room1.getId(),updateRoomDto);
+
+        verify(roomMapper).updateEntityFromDto(updateRoomDto, room1);
+        verify(roomRepo,times(1)).save(room1);
+        verify(roomMapper).toUpdatedDto(room1);
+
+        assertEquals("Room 2", result.getName());
+        assertEquals(2, result.getSize());
+
+    }
 }
