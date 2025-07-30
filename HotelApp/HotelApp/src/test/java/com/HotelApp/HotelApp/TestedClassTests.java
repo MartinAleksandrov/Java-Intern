@@ -75,6 +75,7 @@ public class TestedClassTests {
         assertEquals("success", result);
     }
 
+
     //Soft Assertion allows to pass through all asserts
     @Test
     public void softAssertionsAllowsAllAssertionsToPass(){
@@ -104,5 +105,20 @@ public class TestedClassTests {
     @ValueSource(strings = {"ivan@ab@v.bg","pesho@abv.bg","joro@gmail.com"})
     public void valueSourceShouldWorkCorrectly(String value){
         assertTrue(testedClass.isEmailCorrect(value));
+    }
+
+
+    //Calling dependency directly from object
+    @Test
+    public void callingDependencyFromServiceMustThrowException(){
+
+        //when(testedClass.mockedClass.doSomething()).thenReturn("Something");
+        //String result = testedClass.mockedClass.doSomething();
+
+        doReturn("Something").when(mockedClass).doSomething();
+        String result = mockedClass.doSomething();
+
+
+        assertEquals("Something", result);
     }
 }
