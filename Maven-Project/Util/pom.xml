@@ -11,6 +11,14 @@
 
     <artifactId>Util</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
