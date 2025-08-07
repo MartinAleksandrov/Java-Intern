@@ -1,0 +1,43 @@
+ПРИМЕРЕН CHANGElOG FILE
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ChangeLog: Основният файл, който съдържа всички changeSet-ове -->
+
+    <!-- ChangeSet #1: Създаване на таблица 'person' -->
+    <changeSet id="1-create-person" author="alice">
+        <!-- ChangeType: createTable -->
+        <createTable tableName="person">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet #2: Добавяне на колона и попълване на данни -->
+    <changeSet id="2-add-age" author="bob">
+        <!-- ChangeType: addColumn -->
+        <addColumn tableName="person">
+            <column name="age" type="INT"/>
+        </addColumn>
+        <!-- ChangeType: sql (raw SQL) -->
+        <sql>
+            UPDATE person SET age = 30 WHERE id = 1;
+        </sql>
+    </changeSet>
+
+    <!-- ChangeSet #3: Преименуване на таблица -->
+    <changeSet id="3-rename-person" author="carol">
+        <!-- ChangeType: renameTable -->
+        <renameTable oldTableName="person" newTableName="customer"/>
+    </changeSet>
+
+    <!-- ChangeSet #4: Включване на външен changelog файл -->
+    <include file="additional-changes.yaml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
