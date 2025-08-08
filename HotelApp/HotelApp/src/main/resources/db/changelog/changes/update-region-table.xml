@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="2" author="Martin Aleksandrov">
+        <renameColumn tableName="Region" oldColumnName="region_name" newColumnName="name"
+        columnDataType="varchar(255)"/>
+    </changeSet>
+
+    <changeSet id="3" author="Martin Aleksandrov">
+        <modifyDataType tableName="Region" columnName="size" newDataType="decimal(10,2)"/>
+
+        <addColumn tableName="Region">
+            <column name="population" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
