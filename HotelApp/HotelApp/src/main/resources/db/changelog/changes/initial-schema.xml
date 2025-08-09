@@ -22,9 +22,4 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="5" author="Martin Aleksandrov">
-        <rollback>
-            <dropTable tableName="Region"/>
-        </rollback>
-    </changeSet>
 </databaseChangeLog>
