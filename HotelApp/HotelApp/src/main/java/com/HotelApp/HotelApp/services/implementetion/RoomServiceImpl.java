@@ -10,10 +10,7 @@ import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.repositories.RoomRepository;
 import com.HotelApp.HotelApp.services.contracts.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
@@ -38,7 +35,7 @@ public class RoomServiceImpl implements RoomService {
         Optional<Room> room = roomRepository.findById(id);
 
         if (room.isEmpty()) {
-            throw new RoomNotFoundException("Room not found" + id);
+            throw new RoomNotFoundException("Room not found - " + id);
         }
 
         return roomMapper.toRoomDto(room.get());
