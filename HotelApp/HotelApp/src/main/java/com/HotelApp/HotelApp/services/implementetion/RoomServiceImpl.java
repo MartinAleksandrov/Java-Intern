@@ -25,7 +25,7 @@ public class RoomServiceImpl implements RoomService {
             this.roomRepository = roomRepository;
             this.hotelRepository = hotelRepository;
             this.roomMapper = roomMapper;
-        }
+    }
 
 
     @Override
