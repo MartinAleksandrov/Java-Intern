@@ -1,6 +1,6 @@
 package com.HotelApp.HotelApp.GlobalExceptions;
 
-public class RoomErrorResponse extends Exception{
+public class RoomErrorResponse {
 
     private int status;
     private String message;
@@ -13,6 +13,7 @@ public class RoomErrorResponse extends Exception{
     }
 
     public RoomErrorResponse(){}
+
 
     public int getStatus() {
         return status;
@@ -30,7 +31,6 @@ public class RoomErrorResponse extends Exception{
         this.timeStamp = timeStamp;
     }
 
-    @Override
     public String getMessage() {
         return message;
     }
