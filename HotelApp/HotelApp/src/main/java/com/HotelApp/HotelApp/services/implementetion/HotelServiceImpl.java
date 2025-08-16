@@ -37,7 +37,7 @@ public class HotelServiceImpl implements HotelService {
     public Boolean removeHotel(Hotel hotel) {
         return true;
     }
-
+ // Just comment
     @Override
     public Set<AllRoomsDto> getAllRooms(String hotelName) {
 

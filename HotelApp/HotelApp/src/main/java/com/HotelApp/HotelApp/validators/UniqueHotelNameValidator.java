@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 //Създаваме валидатор ,като имплементираме интерфейс ConstraintValidator,
-// който приема като аргументи името на анотацията, която ще изпорзва и от какъв тип е полето което ще се валидира.
+// който приема като аргументи името на анотацията, която ще използва и от какъв тип е полето което ще се валидира.
 @Component
 public class UniqueHotelNameValidator implements ConstraintValidator<UniqueHotelName, String> {
 
