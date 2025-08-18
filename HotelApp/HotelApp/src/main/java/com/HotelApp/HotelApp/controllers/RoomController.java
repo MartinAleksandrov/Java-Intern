@@ -40,17 +40,7 @@ public class RoomController {
         return new ResponseEntity<>(dto,HttpStatus.OK);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<RoomErrorResponse> handleExceptions(RoomNotFoundException ex){
-
-        RoomErrorResponse response = new RoomErrorResponse();
-
-        response.setMessage(ex.getMessage());
-        response.setStatus(HttpStatus.NOT_FOUND.value());
-        response.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
-    }
+    
 
     @PostMapping("/createRoom")
     public ResponseEntity<NewRoomDto> createRoom(@Valid @RequestBody NewRoomDto roomDto) {
