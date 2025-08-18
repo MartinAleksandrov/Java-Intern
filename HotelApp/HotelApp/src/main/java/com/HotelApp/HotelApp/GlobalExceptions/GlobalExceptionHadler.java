@@ -5,9 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+
+//This annotation make this class cather for specific exceptions
 @ControllerAdvice
 public class GlobalExceptionHadler {
 
+    //Catches specific exception
     @ExceptionHandler
     public ResponseEntity<RoomErrorResponse> handleExceptions(RoomNotFoundException ex){
 
