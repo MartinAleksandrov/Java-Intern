@@ -1,4 +1,4 @@
-package com.HotelApp.HotelApp.services.implementetion;
+package com.HotelApp.HotelApp.services.implementation;
 
 import com.HotelApp.HotelApp.GlobalExceptions.RoomNotFoundException;
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;

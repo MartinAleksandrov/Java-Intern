@@ -1,4 +1,4 @@
-package com.HotelApp.HotelApp.services.implementetion;
+package com.HotelApp.HotelApp.services.implementation;
 
 import com.HotelApp.HotelApp.dtos.guestDtos.NewGuestDto;
 import com.HotelApp.HotelApp.entities.Guest;

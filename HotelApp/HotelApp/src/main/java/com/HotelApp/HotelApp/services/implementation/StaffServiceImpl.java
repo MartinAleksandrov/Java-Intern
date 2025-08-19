@@ -1,4 +1,4 @@
-package com.HotelApp.HotelApp.services.implementetion;
+package com.HotelApp.HotelApp.services.implementation;
 
 import com.HotelApp.HotelApp.dtos.staffDtos.NewStaffDto;
 import com.HotelApp.HotelApp.mappers.StaffMapper;

@@ -5,6 +5,7 @@ import com.HotelApp.HotelApp.GlobalExceptions.RoomNotFoundException;
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.RoomDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
+import com.HotelApp.HotelApp.facade.contracts.RoomFacade;
 import com.HotelApp.HotelApp.services.contracts.RoomService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,12 @@ import java.util.UUID;
 public class RoomController {
 
     private final RoomService roomService;
+    private final RoomFacade roomFacade;
 
     @Autowired
-    public RoomController(RoomService roomService) {
+    public RoomController(RoomService roomService, RoomFacade roomFacade) {
         this.roomService = roomService;
+        this.roomFacade = roomFacade;
     }
 
 
@@ -44,7 +47,7 @@ public class RoomController {
 
     @PostMapping("/createRoom")
     public ResponseEntity<NewRoomDto> createRoom(@Valid @RequestBody NewRoomDto roomDto) {
-        var room = roomService.createRoom(roomDto);
+        var createdRoom = roomFacade.createRoom(roomDto);
 
         return new ResponseEntity<>(roomDto, HttpStatus.CREATED);
     }
