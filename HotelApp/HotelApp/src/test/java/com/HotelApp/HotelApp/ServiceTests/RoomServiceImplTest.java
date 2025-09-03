@@ -7,7 +7,7 @@ import com.HotelApp.HotelApp.entities.Room;
 import com.HotelApp.HotelApp.mappers.RoomMapper;
 import com.HotelApp.HotelApp.repositories.HotelRepository;
 import com.HotelApp.HotelApp.repositories.RoomRepository;
-import com.HotelApp.HotelApp.services.implementetion.RoomServiceImpl;
+import com.HotelApp.HotelApp.services.implementation.RoomServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

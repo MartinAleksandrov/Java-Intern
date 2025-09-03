@@ -1,5 +1,6 @@
-package com.HotelApp.HotelApp.services.implementetion;
+package com.HotelApp.HotelApp.services.implementation;
 
+import com.HotelApp.HotelApp.GlobalExceptions.RoomNotFoundException;
 import com.HotelApp.HotelApp.dtos.roomDtos.NewRoomDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.RoomDto;
 import com.HotelApp.HotelApp.dtos.roomDtos.UpdateRoomDto;
@@ -11,6 +12,7 @@ import com.HotelApp.HotelApp.services.contracts.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,17 +27,20 @@ public class RoomServiceImpl implements RoomService {
             this.roomRepository = roomRepository;
             this.hotelRepository = hotelRepository;
             this.roomMapper = roomMapper;
-        }
+    }
 
 
     @Override
     public RoomDto getRoomById(UUID id) {
-        Room room = roomRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        Optional<Room> room = roomRepository.findById(id);
 
-        Room room2 = roomRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        if (room.isEmpty()) {
+            throw new RoomNotFoundException("Room not found - " + id);
+        }
 
-        return roomMapper.toRoomDto(room);
+        return roomMapper.toRoomDto(room.get());
     }
+
 
     @Override
     public NewRoomDto createRoom(NewRoomDto newRoomDto) {

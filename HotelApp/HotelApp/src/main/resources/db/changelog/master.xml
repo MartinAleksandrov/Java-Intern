@@ -8,7 +8,4 @@
 
     <include file="/db/changelog/changes/initial-schema.xml"/>
     <include file="/db/changelog/changes/update-region-table.xml"/>
-
-
-
 </databaseChangeLog>
