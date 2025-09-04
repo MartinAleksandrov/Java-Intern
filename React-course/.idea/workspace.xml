@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d0507ff-18d4-4940-babc-586fb85ff54c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/chatbot.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HotelApp/HotelApp/src/main/resources/messages_bg.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +67,7 @@
       <workItem from="1756906921363" duration="615000" />
       <workItem from="1756908170800" duration="123000" />
       <workItem from="1756968138592" duration="64000" />
-      <workItem from="1756968316258" duration="7705000" />
+      <workItem from="1756968316258" duration="7766000" />
     </task>
     <servers />
   </component>
